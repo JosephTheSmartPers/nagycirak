@@ -24,7 +24,7 @@ async function FrissitNepesseg(min, max) {
     //Az új értéket visszaírjuk a fájlba 
 }
 setInterval(() => {
-    FrissitNepesseg(-1, 4)
+    FrissitNepesseg(-2, 2)
 }, nepSzamalaloInterval);
 
 

@@ -2,6 +2,7 @@ const WebSocket = require('ws');
 
 const fs = require('fs');
 const util = require('util');
+const { json } = require('express');
 
 const readFile = util.promisify(fs.readFile)
 const filePath = 'nepesseg.txt'
@@ -10,8 +11,11 @@ const kerNepessegSzam = async () => await readFile(filePath, 'utf8')
 
 const server = new WebSocket.Server({ port: 8080 });
 
+const sendObject = (object) => JSON.stringify(object)
+
 server.on('connection', (socket) => {
-    socket.send("10")
+    socket.send(sendObject({ username: "joseph", pfpURL: "none" }))
+
     console.log('Client connected');
 
     socket.on('message', (message) => {
